@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t jdonov/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true jdonov/docker-reat npm run test -- --coverage
